@@ -1,0 +1,9 @@
+#dir
+.gradle
+.idea
+build
+gradle
+
+#files
+gradlew
+gradlew.*

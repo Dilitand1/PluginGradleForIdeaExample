@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.7.2'
+}
+
+group 'ru.litvinov.testPlugins'
+version '1.0-SNAPSHOT'
+
+project.group 'ru.sbrf.plugins'
+def isSnapshot = projectVersion.toString().contains('SNAPSHOT')
+project.version projectVersion
+
+println "  Project name:   ${project.name}"
+println "  Project version:   ${project.version}"
+println "  isSnapshot:   ${isSnapshot}"
+println "  mavenUser:   ${mavenUser}"
+println "  domain:   ${domain}"
+println "  intellijIdeaVersion:   ${intellijIdeaVersion}"
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version '2020.3.2'
+}
+patchPluginXml {
+    changeNotes """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}
+test {
+    useJUnitPlatform()
+    println "=============\ntest block\n============="
+}
+
+tasks.buildSearchableOptions {
+    enabled = false
+}
