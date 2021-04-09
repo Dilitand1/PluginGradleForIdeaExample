@@ -1,7 +1,22 @@
+//buildscript {
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//    dependencies {
+//       classpath 'com.squareup.sqldelight:gradle-plugin:1.4.4'
+////        classpath files('libs/sqldelight-compiler-1.5.0-SNAPSHOT.jar')
+//    }
+//}
+
 plugins {
     id 'java'
+    id 'com.driver733.gradle-kotlin-setup-plugin' version '6.0.4'
     id 'org.jetbrains.intellij' version '0.7.2'
+    id 'com.squareup.sqldelight' version '1.4.4'
 }
+
+//apply plugin: 'com.squareup.sqldelight'
 
 group 'ru.litvinov.testPlugins'
 version '1.0-SNAPSHOT'
@@ -17,25 +32,28 @@ println "  mavenUser:   ${mavenUser}"
 println "  domain:   ${domain}"
 println "  intellijIdeaVersion:   ${intellijIdeaVersion}"
 
-
 repositories {
     mavenCentral()
+    google()
 }
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
     version '2020.3.2'
 }
+
 patchPluginXml {
     changeNotes """
       Add change notes here.<br>
       <em>most HTML tags may be used</em>"""
 }
+
 test {
     useJUnitPlatform()
     println "=============\ntest block\n============="
