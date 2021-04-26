@@ -1,3 +1,10 @@
+//pluginManagement {
+//    repositories {
+//        maven {
+//            url domain + '/nexus/content/repositories/gradle_plugins_proxy'
+//        }
+//    }
+//}
 
 
 rootProject.name = 'MyFirstPlugin'

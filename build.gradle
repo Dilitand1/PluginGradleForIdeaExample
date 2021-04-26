@@ -32,6 +32,13 @@ println "  mavenUser:   ${mavenUser}"
 println "  domain:   ${domain}"
 println "  intellijIdeaVersion:   ${intellijIdeaVersion}"
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+buildSearchableOptions.enabled = false
+
 repositories {
     mavenCentral()
     google()
@@ -45,7 +52,15 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version '2020.3.2'
+    version intellijIdeaVersion
+//    intellijRepo = domain + '/nexus/content/repositories/jetbrains-intellij-repository-proxy'
+//    project.repositories.maven {
+//        it.url = domain + '/nexus/content/repositories/jetbrains-intellij-repository-proxy'
+//    }
+    updateSinceUntilBuild true
+    sameSinceUntilBuild false
+    pluginName project.name
+    plugins 'java', 'maven', 'properties', 'com.intellij.database', 'yaml'
 }
 
 patchPluginXml {

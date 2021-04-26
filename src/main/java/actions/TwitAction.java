@@ -1,9 +1,10 @@
+package actions;
+
 import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.editor.SelectionModel;
 import com.intellij.openapi.ui.Messages;
 import org.jetbrains.annotations.NotNull;
 
@@ -23,6 +24,7 @@ public class TwitAction extends AnAction {
     public void actionPerformed(@NotNull AnActionEvent event) {
 
         Editor editor = event.getData(PlatformDataKeys.EDITOR);
+        assert editor != null;
         String selectedText = editor.getSelectionModel().getSelectedText();
         Messages.showMessageDialog(selectedText, "Zagolovok",Messages.getInformationIcon());
         BrowserUtil.browse("https://yandex.ru/search/?lr=213&text=" + selectedText);

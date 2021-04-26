@@ -18,8 +18,11 @@
 
     <actions>
 
-        <action id="TwitAction" class="TwitAction" text="TwitAction" description="TwitAction">
+        <action id="actions.TwitAction" class="actions.TwitAction" text="Actions.TwitAction" description="Actions.twitAction">
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl BACK_SLASH"/>
         </action>
+
+
+
     </actions>
 </idea-plugin>
